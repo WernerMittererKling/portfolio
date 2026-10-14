@@ -95,6 +95,8 @@ section{padding-block:3.5rem;border-top:1px solid var(--line)}
 .chip{display:flex;align-items:center;justify-content:center;text-align:center;min-height:3.2rem;font-size:1.02rem;font-weight:600;padding:.6rem .8rem;border-radius:12px;background:var(--bg);border:1px solid var(--line);transition:border-color .2s,transform .2s}
 .chip:last-child:nth-child(odd){grid-column:span 2}
 .chip:hover{border-color:var(--accent);transform:translateY(-2px)}
+.legend{display:flex;gap:.5rem;align-items:center;margin:.8rem 0 0;font-size:.85rem;color:var(--muted)}
+.legend .dot{width:.8rem;height:.8rem;border-radius:4px;background:var(--accent-soft);border:1px solid var(--accent);flex:none}
 .chip.key{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
 @media (prefers-reduced-motion:reduce){.chip{transition:none}.chip:hover{transform:none}}
 
@@ -206,16 +208,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 
   <section id="skills">
     <div class="sec-head">
-      <div><p class="eyebrow">03</p><h2>Skills</h2></div>
+      <div><p class="eyebrow">03</p><h2>Skills</h2><p class="legend"><span class="dot" aria-hidden="true"></span><span class="de">Hervorgehoben: nutze ich aktuell im Job</span><span class="en">Highlighted: what I use in my current job</span></p></div>
       <div class="skills">
         <div><h3><span class="de">Sprachen</span><span class="en">Languages</span></h3>
-          <div class="chips"><span class="chip key">Java</span><span class="chip key">C#</span><span class="chip">Python</span><span class="chip">JavaScript</span></div></div>
+          <div class="chips"><span class="chip">Java</span><span class="chip">C#</span><span class="chip">Python</span><span class="chip key">JavaScript</span></div></div>
         <div><h3><span class="de">Datenbank</span><span class="en">Database</span></h3>
           <div class="chips"><span class="chip key">Oracle APEX</span><span class="chip key">SQL</span><span class="chip key">PL/SQL</span></div></div>
         <div><h3>Web</h3>
-          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Pug</span></div></div>
+          <div class="chips"><span class="chip key">HTML</span><span class="chip key">CSS</span><span class="chip">Pug</span></div></div>
         <div><h3>Tools</h3>
-          <div class="chips"><span class="chip">VS Code</span><span class="chip">Toad</span><span class="chip">Claude Code</span></div></div>
+          <div class="chips"><span class="chip key">VS Code</span><span class="chip key">Toad</span><span class="chip key">Claude Code</span></div></div>
       </div>
     </div>
   </section>
