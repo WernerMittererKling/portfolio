@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Werner Mitterer-Kling – Softwareentwickler aus Österreich. Java, C#, Oracle APEX, SQL, PL/SQL.">
+<title>Werner Mitterer-Kling</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Design K "Nachtblau": deliberately single dark look. Single column, hero with soft color fields behind it, sections on a label/content grid */
+:root{
+  --bg:#0B1626; --surface:#122238; --ink:#EAF2FF; --muted:#93A9C6; --line:#1F3350;
+  --accent:#5B9BF0; --accent-soft:#16305A; --accent-ink:#BCD7FB; --warm:#18B3A4; --frame:#2C4466;
+  --orb-a:#1E6FD9; --orb-b:#18B3A4;
+  --display:"Syne", "Segoe UI", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+  color-scheme:dark;
+}
+.hero{position:relative;isolation:isolate}
+.orbs{position:absolute;inset:0;overflow:hidden;z-index:-1;pointer-events:none}
+.orbs i{position:absolute;border-radius:50%;filter:blur(60px);opacity:.45}
+.orbs i:nth-child(1){width:26rem;height:26rem;background:var(--orb-a);right:-6rem;top:-8rem}
+.orbs i:nth-child(2){width:16rem;height:16rem;background:var(--orb-b);right:14rem;bottom:-6rem;opacity:.3}
+@media (prefers-reduced-motion:no-preference){.orbs i{animation:drift 14s ease-in-out infinite alternate}}
+@keyframes drift{to{transform:translate(-2rem,1.5rem)}}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:64rem;margin:0 auto}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.1}
+.eyebrow{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+html[data-l="en"] .de, html:not([data-l="en"]) .en{display:none}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:.75rem}
+.brand{font-family:var(--display);font-weight:700;font-size:1.05rem;text-decoration:none;color:var(--ink)}
+.brand span{color:var(--accent)}
+.nav{display:flex;align-items:center;gap:1.25rem}
+.nav a{color:var(--muted);text-decoration:none;font-size:.95rem}
+.nav a:hover{color:var(--ink)}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--surface)}
+.lang button{font:500 .78rem var(--mono);border:0;background:none;color:var(--muted);padding:.3rem .65rem;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--accent);color:var(--bg)}
+@media (max-width:640px){.nav a{display:none}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:2.5rem;align-items:center;padding-block:4.5rem 3.5rem}
+.hero h1{font-size:clamp(2rem,6.5vw,4.2rem);font-weight:800;letter-spacing:-.01em}
+.top{background:rgba(11,22,38,.85);backdrop-filter:blur(10px)}
+.phone{border-color:var(--frame)!important}
+.phone .notch{background:var(--frame)!important}
+.hero h1 .last{color:var(--accent)}
+.role{font-family:var(--mono);font-size:1rem;color:var(--accent-ink);background:var(--accent-soft);display:inline-block;padding:.3rem .7rem;border-radius:6px;margin-top:1.25rem}
+.lead{font-size:1.2rem;color:var(--muted);max-width:36rem;margin:1.25rem 0 0}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:2rem}
+.btn{font:600 .95rem var(--body);text-decoration:none;padding:.75rem 1.2rem;border-radius:10px;border:1.5px solid var(--accent);cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--bg)}
+.btn.ghost{background:transparent;color:var(--accent)}
+.portrait img{width:100%;height:100%;object-fit:cover;border-radius:21px;display:block}
+.portrait{width:clamp(8rem,16vw,11rem);aspect-ratio:1/1;max-width:100%;border-radius:22px;background:var(--accent-soft);
+  display:grid;place-items:center;position:relative;border:1px solid var(--line)}
+.portrait b{font-family:var(--display);font-size:clamp(2.5rem,6vw,4rem);color:var(--accent)}
+.portrait small{position:absolute;bottom:.7rem;font-family:var(--mono);font-size:.7rem;color:var(--muted)}
+.portrait::after{content:"";position:absolute;width:3.2rem;height:3.2rem;border-radius:50%;background:var(--warm);right:-1rem;top:-1rem;z-index:-1}
+@media (max-width:640px){.hero{grid-template-columns:1fr;padding-block:2.5rem}.portrait{order:-1;width:8rem}}
+
+/* sections */
+section{padding-block:3.5rem;border-top:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:12rem minmax(0,1fr);gap:2rem}
+.sec-head h2{font-size:1.9rem;font-weight:600}
+@media (max-width:760px){.sec-head{grid-template-columns:1fr;gap:1rem}}
+.prose p{margin:0 0 1rem;max-width:40rem}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:1.75rem}
+.tl li{display:grid;grid-template-columns:7rem minmax(0,1fr);gap:1.25rem}
+.tl time{font-family:var(--mono);font-size:.85rem;color:var(--accent);padding-top:.2rem;font-variant-numeric:tabular-nums}
+.tl h3{font-size:1.2rem;font-weight:600}
+.tl p{margin:.3rem 0 0;color:var(--muted);max-width:38rem}
+@media (max-width:480px){.tl li{grid-template-columns:1fr;gap:.2rem}}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}
+@media (max-width:560px){.skills{grid-template-columns:1fr}}
+.skills>div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:1.1rem}
+.skills h3{font-family:var(--mono);font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.85rem}
+.chips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem}
+.chip{display:flex;align-items:center;justify-content:center;text-align:center;min-height:3.2rem;font-size:1.02rem;font-weight:600;padding:.6rem .8rem;border-radius:12px;background:var(--bg);border:1px solid var(--line);transition:border-color .2s,transform .2s}
+.chip:last-child:nth-child(odd){grid-column:span 2}
+.chip:hover{border-color:var(--accent);transform:translateY(-2px)}
+.chip.key{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
+@media (prefers-reduced-motion:reduce){.chip{transition:none}.chip:hover{transform:none}}
+
+/* project */
+.project{display:grid;grid-template-columns:minmax(0,1fr) 15rem;gap:2.5rem;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:2rem}
+.project h3{font-size:1.9rem;font-weight:700}
+.tag{font-family:var(--mono);font-size:.75rem;color:var(--accent-ink);background:var(--accent-soft);padding:.2rem .55rem;border-radius:5px}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(9rem,1fr));gap:1rem;margin:1.5rem 0;padding:1rem 0;border-block:1px solid var(--line)}
+.facts dt{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:.2rem 0 0;font-weight:500}
+.feat{margin:0;padding-left:1.1rem;display:grid;gap:.35rem;color:var(--muted)}
+.feat b{color:var(--ink);font-weight:600}
+@media (max-width:760px){.project{grid-template-columns:1fr;padding:1.25rem}.phone{margin:0 auto}}
+
+/* phone illustration */
+.phone{width:13rem;max-width:100%;aspect-ratio:9/18;border-radius:2rem;border:6px solid var(--ink);background:var(--bg);padding:1rem .8rem;display:flex;flex-direction:column;gap:.7rem;position:relative}
+.phone .notch{width:4rem;height:.9rem;border-radius:999px;background:var(--ink);margin:-.4rem auto .2rem}
+.ph-title{font-family:var(--display);font-weight:700;font-size:.95rem}
+.stack{position:relative;flex:1}
+.card{position:absolute;inset:0;border-radius:14px;background:var(--surface);border:1px solid var(--line);padding:.8rem;display:flex;flex-direction:column;gap:.4rem}
+.card.back{transform:rotate(5deg) translate(6px,4px)}
+.card.front{animation:sway 4s ease-in-out infinite}
+.card .logo{width:2rem;height:2rem;border-radius:8px;background:var(--accent-soft)}
+.card .t{font-weight:600;font-size:.85rem;line-height:1.25}
+.card .s{font-size:.72rem;color:var(--muted)}
+.score{margin-top:auto;font-family:var(--mono);font-size:.75rem;color:var(--accent-ink);background:var(--accent-soft);border-radius:6px;padding:.25rem .45rem;align-self:flex-start}
+.ph-btns{display:flex;justify-content:center;gap:1.4rem}
+.ph-btns span{width:2.4rem;height:2.4rem;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--line);background:var(--surface);font-size:1rem}
+.ph-btns .yes{border-color:var(--accent);color:var(--accent)}
+.ph-cap{font-family:var(--mono);font-size:.7rem;color:var(--muted);text-align:center;margin-top:.6rem}
+@keyframes sway{0%,100%{transform:rotate(0)}50%{transform:rotate(-3deg) translateX(-4px)}}
+@media (prefers-reduced-motion:reduce){.card.front{animation:none}}
+
+/* contact */
+.contact{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:1rem}
+.ct{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.35rem;min-width:0}
+.ct .v{font-weight:600;overflow-wrap:anywhere;user-select:all}
+.ct .row{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
+.ct button,.ct a.small{font:500 .82rem var(--body);padding:.35rem .7rem;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;text-decoration:none}
+.ct button:hover,.ct a.small:hover{border-color:var(--accent)}
+footer{border-top:1px solid var(--line);padding-block:2rem;color:var(--muted);font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top">Werner<span>.</span></a>
+    <nav class="nav" aria-label="Navigation">
+      <a href="#about"><span class="de">Über mich</span><span class="en">About</span></a>
+      <a href="#work"><span class="de">Werdegang</span><span class="en">Experience</span></a>
+      <a href="#project"><span class="de">Projekt</span><span class="en">Project</span></a>
+      <a href="#contact"><span class="de">Kontakt</span><span class="en">Contact</span></a>
+      <div class="lang" role="group" aria-label="Sprache / Language">
+        <button id="l-de" type="button" aria-pressed="true" data-set="de">DE</button>
+        <button id="l-en" type="button" aria-pressed="false" data-set="en">EN</button>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+  <div class="hero">
+    <div class="orbs" aria-hidden="true"><i></i><i></i></div>
+    <div>
+      <p class="eyebrow"><span class="de">Österreich · offen für Projekte weltweit</span><span class="en">Austria · open to projects worldwide</span></p>
+      <h1>Werner<br><span class="last">Mitterer-Kling</span></h1>
+      <span class="role"><span class="de">Softwareentwickler</span><span class="en">Software Developer</span></span>
+      <p class="lead">
+        <span class="de">Ich entwickle Software, die Menschen ihre Arbeit leichter macht – von Oracle-Datenbanken bis zur fertigen App.</span>
+        <span class="en">I build software that makes people's work easier – from Oracle databases to finished apps.</span>
+      </p>
+      <div class="cta">
+        <a class="btn primary" href="#contact"><span class="de">Kontakt aufnehmen</span><span class="en">Get in touch</span></a>
+        <a class="btn ghost" href="#project"><span class="de">Projekt ansehen</span><span class="en">See project</span></a>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="sec-head">
+      <div><p class="eyebrow">01</p><h2><span class="de">Über mich</span><span class="en">About</span></h2></div>
+      <div class="prose">
+        <p class="de">Ich bin Softwareentwickler und arbeite seit August 2024 als Oracle Software Developer an einem neuen ERP-System. Meine Ausbildung zum Informatiker habe ich 2024 an der HTL Spengergasse in Wien abgeschlossen.</p>
+        <p class="en">I'm a software developer and have been working as an Oracle Software Developer on a new ERP system since August 2024. I completed my computer science education at HTL Spengergasse in Vienna in 2024.</p>
+        <p class="de">Schon meine Diplomarbeit drehte sich darum, Absolventen und Unternehmen leichter zusammenzubringen. Daraus entstand TalentBridge, eine Jobplattform, die ich allein von der Idee bis zur fertigen App umgesetzt habe. Mich reizen Projekte, bei denen ich ein Problem von Anfang bis Ende verstehe und löse.</p>
+        <p class="en">My diploma thesis was about making it easier for graduates and companies to find each other. That became TalentBridge, a job platform I built on my own, from the first idea to the finished app. I enjoy projects where I can understand a problem end to end and solve it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="sec-head">
+      <div><p class="eyebrow">02</p><h2><span class="de">Werdegang</span><span class="en">Experience</span></h2></div>
+      <ol class="tl">
+        <li><time>2025</time><div>
+          <h3><span class="de">Oracle-APEX-Schulung</span><span class="en">Oracle APEX training</span></h3>
+          <p><span class="de">Weiterbildung bei der Firma Sphinx.</span><span class="en">Professional training with Sphinx.</span></p></div></li>
+        <li><time><span class="de">seit 08/2024</span><span class="en">since 08/2024</span></time><div>
+          <h3>Oracle Software Developer</h3>
+          <p><span class="de">Entwicklung eines neuen ERP-Systems mit Oracle APEX, SQL und PL/SQL.</span><span class="en">Developing a new ERP system with Oracle APEX, SQL and PL/SQL.</span></p></div></li>
+        <li><time>2024</time><div>
+          <h3><span class="de">Abschluss HTL Spengergasse</span><span class="en">Graduated, HTL Spengergasse</span></h3>
+          <p><span class="de">Ausbildung zum Informatiker. Diplomarbeit: Erleichterung des Bewerbungsprozesses zwischen Absolventen und Unternehmen.</span><span class="en">Computer science education. Diploma thesis: simplifying the application process between graduates and companies.</span></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head">
+      <div><p class="eyebrow">03</p><h2>Skills</h2></div>
+      <div class="skills">
+        <div><h3><span class="de">Sprachen</span><span class="en">Languages</span></h3>
+          <div class="chips"><span class="chip key">Java</span><span class="chip key">C#</span><span class="chip">Python</span><span class="chip">JavaScript</span></div></div>
+        <div><h3><span class="de">Datenbank</span><span class="en">Database</span></h3>
+          <div class="chips"><span class="chip key">Oracle APEX</span><span class="chip key">SQL</span><span class="chip key">PL/SQL</span></div></div>
+        <div><h3>Web</h3>
+          <div class="chips"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Pug</span></div></div>
+        <div><h3>Tools</h3>
+          <div class="chips"><span class="chip">VS Code</span><span class="chip">Toad</span><span class="chip">Claude Code</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="project">
+    <div class="sec-head">
+      <div><p class="eyebrow">04</p><h2><span class="de">Projekt</span><span class="en">Project</span></h2></div>
+      <article class="project">
+        <div>
+          <span class="tag"><span class="de">Eigenprojekt · Alleinverantwortung</span><span class="en">Personal project · sole developer</span></span>
+          <h3 style="margin-top:.8rem">TalentBridge</h3>
+          <p class="de" style="color:var(--muted);margin:.6rem 0 0">Eine Jobplattform für iOS, die Studierende und Unternehmen über einen nachvollziehbaren Matching-Score zusammenbringt. Ich habe alles selbst gemacht: Idee, Konzept, Design, Entwicklung und Veröffentlichung.</p>
+          <p class="en" style="color:var(--muted);margin:.6rem 0 0">A job platform for iOS that matches students and companies with a transparent matching score. I did everything myself: idea, concept, design, development and release.</p>
+          <dl class="facts">
+            <div><dt>Frontend</dt><dd>Next.js, React, TypeScript, Tailwind CSS</dd></div>
+            <div><dt>Backend</dt><dd>Prisma, PostgreSQL</dd></div>
+            <div><dt>Mobile</dt><dd>Capacitor (iOS)</dd></div>
+            <div><dt>Betrieb / Ops</dt><dd>Docker, Render, Codemagic CI/CD</dd></div>
+          </dl>
+          <ul class="feat">
+            <li class="de"><b>Matching-Score</b> zwischen Profil und Stelle, mit Suche und Filtern</li>
+            <li class="en"><b>Matching score</b> between profile and job, with search and filters</li>
+            <li class="de"><b>Swipe-Modus</b> für Studierende und Firmen</li>
+            <li class="en"><b>Swipe mode</b> for students and companies</li>
+            <li class="de"><b>Profile, Lebenslauf-Upload</b> und kompletter Bewerbungsablauf</li>
+            <li class="en"><b>Profiles, CV upload</b> and a full application flow</li>
+            <li class="de"><b>Sicher:</b> serverseitige Sessions, Rollen, gehashte Passwörter, E-Mail-Reset</li>
+            <li class="en"><b>Secure:</b> server-side sessions, roles, hashed passwords, email reset</li>
+          </ul>
+        </div>
+        <div>
+          <div class="phone" aria-hidden="true">
+            <div class="notch"></div>
+            <div class="ph-title">TalentBridge</div>
+            <div class="stack">
+              <div class="card back"></div>
+              <div class="card front">
+                <div class="logo"></div>
+                <div class="t">Junior Developer</div>
+                <div class="s">Wien · Hybrid</div>
+                <div class="s">Java · SQL · React</div>
+                <div class="score">Match 87 %</div>
+              </div>
+            </div>
+            <div class="ph-btns"><span>✕</span><span class="yes">♥</span></div>
+          </div>
+          <p class="ph-cap"><span class="de">Illustration · Screenshots folgen</span><span class="en">Illustration · screenshots coming</span></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head">
+      <div><p class="eyebrow">05</p><h2><span class="de">Kontakt</span><span class="en">Contact</span></h2></div>
+      <div>
+        <p class="prose" style="margin:0 0 1.5rem;color:var(--muted)"><span class="de">Recruiter, Firmen, Kunden oder Entwickler: Ich freue mich über jede Nachricht.</span><span class="en">Recruiters, companies, clients or fellow developers: I'm happy to hear from you.</span></p>
+        <div class="contact">
+          <div class="ct"><span class="eyebrow">E-Mail</span><span class="v" id="mail">werner.kling@outlook.com</span>
+            <div class="row"><button type="button" id="c-mail" data-copy="mail"><span class="de">Kopieren</span><span class="en">Copy</span></button><a class="small" href="mailto:werner.kling@outlook.com"><span class="de">Schreiben</span><span class="en">Write</span></a></div></div>
+          <div class="ct"><span class="eyebrow"><span class="de">Telefon</span><span class="en">Phone</span></span><span class="v" id="tel">+43 650 21 00 397</span>
+            <div class="row"><button type="button" id="c-tel" data-copy="tel"><span class="de">Kopieren</span><span class="en">Copy</span></button><a class="small" href="tel:+436502100397"><span class="de">Anrufen</span><span class="en">Call</span></a></div></div>
+          <div class="ct"><span class="eyebrow">LinkedIn</span><span class="v">Werner Mitterer-Kling</span>
+            <div class="row"><a class="small" href="https://www.linkedin.com/in/werner-mitterer-kling-a35754220/" target="_blank" rel="noopener"><span class="de">Profil öffnen ↗</span><span class="en">Open profile ↗</span></a></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 Werner Mitterer-Kling</span><span class="de">Softwareentwickler · Österreich</span><span class="en">Software Developer · Austria</span></div></footer>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function setLang(l){root.setAttribute('data-l',l);root.lang=l;
+    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.set===l)});
+    try{localStorage.setItem('wmk-lang',l)}catch(e){}}
+  var saved=null;try{saved=localStorage.getItem('wmk-lang')}catch(e){}
+  if(!saved && (navigator.language||'de').slice(0,2)!=='de') saved='en';
+  setLang(saved||'de');
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){setLang(b.dataset.set)})});
+  document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+    var el=document.getElementById(b.dataset.copy),txt=el.textContent.trim(),en=root.getAttribute('data-l')==='en';
+    function done(){var o=b.innerHTML;b.textContent=en?'Copied':'Kopiert';setTimeout(function(){b.innerHTML=o},1500)}
+    function fallback(){var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,fallback)}else fallback();
+  })});
+})();
+</script>
+</body>
+</html>
